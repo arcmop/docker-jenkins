@@ -15,7 +15,7 @@ Acceder a Jenkins con un navegador a http://localhost:8080
 
 Para obtener la contraseña del usuario `admin` de Jenkins, ejecutar el siguiente comando:
 ```
-$ docker exec -it dockerjenkins_master_1 cat /var/jenkins_home/secrets/initialAdminPassword
+$ docker exec -it docker-jenkins_master_1 cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 ---

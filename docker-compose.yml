@@ -1,15 +1,20 @@
 version: '2'
 services:
-  master:
+  jenkins-server:
     build: .
-    image: aprenderdevops/jenkins:latest
+    image: icr-docker-00.registry.com:5000/jenkins:1.0.0
     restart: unless-stopped
-    hostname: jenkins
+    hostname: jenkins-server
+    environment:
+      - JENKINS_OPTS=--httpPort=8080
+      - JENKINS_SLAVE_AGENT_PORT=50000
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
     ports:
       - "8080:8080"
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-
+      - jenkins_log:/var/log/jenkins
 volumes:
   jenkins_home:
+  jenkins_log:
